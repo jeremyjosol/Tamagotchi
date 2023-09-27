@@ -10,7 +10,7 @@ namespace TamagotchiToy.Controllers
     private static List<Tamagotchi> _tamagotchis = new List<Tamagotchi>();
     public static Tamagotchi myTamagotchi;
 
-    [HttpGet("/tamagotchis")] // needs to match form action
+    [HttpGet("/tamagotchis")]
     public ActionResult Index()
     {
       return View(_tamagotchis);
