@@ -17,6 +17,13 @@ namespace TamagotchiTests.Tests
       Assert.AreEqual(25, tamagotchi.Happiness);
       Assert.AreEqual(true, tamagotchi.IsAlive);
     }
+    [TestMethod]
+    public void Feed_ChangesValueOfHungerProperty_Int()
+    {
+      Tamagotchi tamagotchi = new Tamagotchi("Pochita");
+      tamagotchi.Feed();
+      Assert.AreEqual(30, tamagotchi.Hunger);
+    }
   }
 }
   
