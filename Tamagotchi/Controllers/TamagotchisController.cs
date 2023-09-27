@@ -15,11 +15,13 @@ namespace TamagotchiToy.Controllers
     {
       return View(_tamagotchis);
     }
+
     [HttpGet("tamagotchis/new")]
     public ActionResult New()
     {
       return View();
     }
+
     [HttpPost("/tamagotchis")]
     public ActionResult Create(string name)
     {
@@ -27,6 +29,7 @@ namespace TamagotchiToy.Controllers
       _tamagotchis.Add(myTamagotchi);
       return RedirectToAction("Index");
     }
+
     [HttpPost("/tamagotchis/feed")]
     public ActionResult Feed()
     {
@@ -44,6 +47,7 @@ namespace TamagotchiToy.Controllers
       }
       return RedirectToAction("Index");
     }
+
     [HttpPost("/tamagotchis/play")]
     public ActionResult Play()
     {
@@ -52,9 +56,16 @@ namespace TamagotchiToy.Controllers
         Tamagotchi myTamagotchi = _tamagotchis[0];
         myTamagotchi.Play();
         myTamagotchi.LifeUpdate();
+
+        if (!myTamagotchi.IsAlive)
+        {
+          _tamagotchis.Remove(myTamagotchi);
+          return RedirectToAction("GameOver");
+        }
       }
       return RedirectToAction("Index");
     }
+
     [HttpPost("/tamagotchis/sleep")]
     public ActionResult Sleep()
     {
@@ -63,9 +74,16 @@ namespace TamagotchiToy.Controllers
         Tamagotchi myTamagotchi = _tamagotchis[0];
         myTamagotchi.Sleep();
         myTamagotchi.LifeUpdate();
+
+        if (!myTamagotchi.IsAlive)
+        {
+          _tamagotchis.Remove(myTamagotchi);
+          return RedirectToAction("GameOver");
+        }
       }
       return RedirectToAction("Index");
     }
+
     [HttpGet("/tamagotchis/gameover")]
     public ActionResult GameOver()
     {

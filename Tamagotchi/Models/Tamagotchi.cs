@@ -10,7 +10,6 @@ namespace TamagotchiToy.Models
     public int Happiness { get; set; }
     public bool IsAlive { get; set; }
     private static List<Tamagotchi> _instances = new List<Tamagotchi> { };
-  
     public Tamagotchi(string name)
     {
       Id = _instances.Count;
@@ -19,7 +18,6 @@ namespace TamagotchiToy.Models
       Happiness = 25;
       IsAlive = true;
       _instances.Add(this);
-
     }
     public void Feed()
     {
