@@ -13,6 +13,11 @@
     @using TamagotchiToy.Models;
     @model List<TamagotchiToy.Models.Tamagotchi>
   <h1>Welcome to your Tamagotchi Toy.</h1>
+    @if (Model.Count == 0)
+    {
+      <p>You have no Tamagotchis to play with.</p>
+      <p><a href="tamagotchis/new">Create a new Tamagotchi!</a></p>
+    }
   @foreach (Tamagotchi tamagotchi in Model)
   {
   <h3>Your Tamagotchi's name is: @tamagotchi.Name</h3>
