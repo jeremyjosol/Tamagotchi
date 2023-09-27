@@ -4,17 +4,22 @@ namespace TamagotchiToy.Models
 {
   public class Tamagotchi
   {
+    public int Id { get; }
     public string Name { get; set; }
     public int Hunger { get; set; }
     public int Happiness { get; set; }
     public bool IsAlive { get; set; }
+    private static List<Tamagotchi> _instances = new List<Tamagotchi> { };
   
     public Tamagotchi(string name)
     {
+      Id = _instances.Count;
       Name = name;
       Hunger = 25;
       Happiness = 25;
       IsAlive = true;
+      _instances.Add(this);
+
     }
     public void Feed()
     {
@@ -37,6 +42,14 @@ namespace TamagotchiToy.Models
       {
         IsAlive = false;
       }
+    }
+    public static List<Tamagotchi> GetAll()
+    {
+      return _instances;
+    }
+    public static Tamagotchi Find(int searchId)
+    {
+      return _instances[searchId - 1];
     }
   }
 }

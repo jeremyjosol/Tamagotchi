@@ -8,9 +8,9 @@ namespace TamagotchiToy.Controllers
   public class TamagotchisController : Controller
   {
     [HttpGet("/tamagotchis")] // needs to match form action
-    public ActionResult Index(string name)
+    public ActionResult Index()
     {
-      Tamagotchi myTamagotchi = new Tamagotchi(name);
+      List<Tamagotchi> myTamagotchi = Tamagotchi.GetAll();
       return View(myTamagotchi);
     }
     [HttpGet("tamagotchis/new")]
@@ -22,6 +22,13 @@ namespace TamagotchiToy.Controllers
     public ActionResult Create(string name)
     {
       Tamagotchi myTamagotchi = new Tamagotchi(name);
+      return RedirectToAction("Index", myTamagotchi);
+    }
+    [HttpPost("tamagotchis/feed")]
+    public ActionResult Feed(string name)
+    {
+      Tamagotchi myTamagotchi = new Tamagotchi(name);
+      myTamagotchi.Feed();
       return RedirectToAction("Index", myTamagotchi);
     }
   }
