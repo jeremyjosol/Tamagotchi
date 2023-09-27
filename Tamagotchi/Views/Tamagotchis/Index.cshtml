@@ -11,7 +11,11 @@
   </head>
   <body>
     @using TamagotchiToy.Models;
-  <h1>Welcome to Tamagotchi. Name your Tamagotchi below to get started!</h1>
-  
+  <h1>Welcome to your Tamagotchi Toy.</h1>
+  <h3>Your Tamagotchi's name is: @Model.Name</h3>
+  <h3>Your Tamagotchi's Hunger is: @Model.Hunger</h3>
+  <h3>Your Tamagotchi's Happiness is: @Model.Happiness</h3>
+  @Model.IsAlive
+
   </body>
 </html>

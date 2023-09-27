@@ -31,7 +31,6 @@ namespace TamagotchiToy.Models
       Hunger -= 2;
       Happiness += 10;
     }
-
     public void LifeUpdate()
     {
       if (Hunger == 0 || Happiness <= 0)
