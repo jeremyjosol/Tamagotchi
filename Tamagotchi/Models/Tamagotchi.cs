@@ -19,11 +19,25 @@ namespace TamagotchiToy.Models
     public void Feed()
     {
       Hunger += 5;
-      Happiness -= 2;
+      Happiness += 2;
     }
     public void Play()
     {
-      
+      Hunger -= 2;
+      Happiness += 5;
+    }
+    public void Sleep()
+    {
+      Hunger -= 2;
+      Happiness += 10;
+    }
+
+    public void LifeUpdate()
+    {
+      if (Hunger == 0 || Happiness <= 0)
+      {
+        IsAlive = false;
+      }
     }
   }
 }
