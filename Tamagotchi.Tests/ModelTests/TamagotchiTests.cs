@@ -24,6 +24,13 @@ namespace TamagotchiTests.Tests
       tamagotchi.Feed();
       Assert.AreEqual(30, tamagotchi.Hunger);
     }
+    [TestMethod]
+    public void Play_ChangesValueOfHappinessProperty_Int()
+    {
+      Tamagotchi tamagotchi = new Tamagotchi("Pochita");
+      tamagotchi.Play();
+      Assert.AreEqual(30, tamagotchi.Happiness);
+    }
   }
 }
   
