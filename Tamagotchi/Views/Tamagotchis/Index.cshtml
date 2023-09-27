@@ -11,15 +11,23 @@
   </head>
   <body>
     @using TamagotchiToy.Models;
+    @model List<TamagotchiToy.Models.Tamagotchi>
   <h1>Welcome to your Tamagotchi Toy.</h1>
   @foreach (Tamagotchi tamagotchi in Model)
   {
   <h3>Your Tamagotchi's name is: @tamagotchi.Name</h3>
   <h3>Your Tamagotchi's Hunger is: @tamagotchi.Hunger</h3>
   <h3>Your Tamagotchi's Happiness is: @tamagotchi.Happiness</h3>
-  }
-  <form action="tamagotchis/feed" method="post">
-  <button type="submit">Feed</button>
+  
+   <form action="tamagotchis/feed" method="post" value="feed">
+    <button type="submit">Feed</button>
   </form>
+  <form action="tamagotchis/play" method="post" value="play">
+    <button type="submit">Play</button>
+  </form>
+  <form action="tamagotchis/sleep" method="post" value="sleep">
+    <button type="submit">Sleep</button>
+  </form>
+  }
   </body>
 </html>

@@ -7,11 +7,13 @@ namespace TamagotchiToy.Controllers
 {
   public class TamagotchisController : Controller
   {
+    private static List<Tamagotchi> _tamagotchis = new List<Tamagotchi>();
+    public static Tamagotchi myTamagotchi;
+
     [HttpGet("/tamagotchis")] // needs to match form action
     public ActionResult Index()
     {
-      List<Tamagotchi> myTamagotchi = Tamagotchi.GetAll();
-      return View(myTamagotchi);
+      return View(_tamagotchis);
     }
     [HttpGet("tamagotchis/new")]
     public ActionResult New()
@@ -22,14 +24,52 @@ namespace TamagotchiToy.Controllers
     public ActionResult Create(string name)
     {
       Tamagotchi myTamagotchi = new Tamagotchi(name);
-      return RedirectToAction("Index", myTamagotchi);
+      _tamagotchis.Add(myTamagotchi);
+      return RedirectToAction("Index");
     }
-    [HttpPost("tamagotchis/feed")]
-    public ActionResult Feed(string name)
+    [HttpPost("/tamagotchis/feed")]
+    public ActionResult Feed()
     {
-      Tamagotchi myTamagotchi = new Tamagotchi(name);
-      myTamagotchi.Feed();
-      return RedirectToAction("Index", myTamagotchi);
+      if (_tamagotchis.Count > 0)
+      {
+        Tamagotchi myTamagotchi = _tamagotchis[0];
+        myTamagotchi.Feed();
+        myTamagotchi.LifeUpdate();
+
+        if (!myTamagotchi.IsAlive)
+        {
+          _tamagotchis.Remove(myTamagotchi);
+          return RedirectToAction("GameOver");
+        }
+      }
+      return RedirectToAction("Index");
+    }
+    [HttpPost("/tamagotchis/play")]
+    public ActionResult Play()
+    {
+      if (_tamagotchis.Count > 0)
+      {
+        Tamagotchi myTamagotchi = _tamagotchis[0];
+        myTamagotchi.Play();
+        myTamagotchi.LifeUpdate();
+      }
+      return RedirectToAction("Index");
+    }
+    [HttpPost("/tamagotchis/sleep")]
+    public ActionResult Sleep()
+    {
+      if (_tamagotchis.Count > 0)
+      {
+        Tamagotchi myTamagotchi = _tamagotchis[0];
+        myTamagotchi.Sleep();
+        myTamagotchi.LifeUpdate();
+      }
+      return RedirectToAction("Index");
+    }
+    [HttpGet("/tamagotchis/gameover")]
+    public ActionResult GameOver()
+    {
+      return View();
     }
   }
 }
