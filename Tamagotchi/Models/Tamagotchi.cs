@@ -4,7 +4,6 @@ namespace TamagotchiToy.Models
 {
   public class Tamagotchi
   {
-    public int Id { get; }
     public string Name { get; set; }
     public int Hunger { get; set; }
     public int Happiness { get; set; }
@@ -12,7 +11,6 @@ namespace TamagotchiToy.Models
     private static List<Tamagotchi> _instances = new List<Tamagotchi> { };
     public Tamagotchi(string name)
     {
-      Id = _instances.Count;
       Name = name;
       Hunger = 25;
       Happiness = 25;
