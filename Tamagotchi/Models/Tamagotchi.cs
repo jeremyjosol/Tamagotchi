@@ -8,14 +8,13 @@ namespace TamagotchiToy.Models
     public int Hunger { get; set; }
     public int Happiness { get; set; }
     public bool IsAlive { get; set; }
-    private static List<Tamagotchi> _instances = new List<Tamagotchi> { };
+    
     public Tamagotchi(string name)
     {
       Name = name;
       Hunger = 25;
       Happiness = 25;
       IsAlive = true;
-      _instances.Add(this);
     }
     public void Feed()
     {
