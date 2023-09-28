@@ -9,7 +9,7 @@ namespace TamagotchiTests.Tests
   public class TamagotchiTests
   {
     [TestMethod]
-    public void Tamagotchi_CreateInstanceOfTamagotchi_Tamagotchi()
+    public void Tamagotchi_CreatesInstanceOfTamagotchi_Tamagotchi()
     {
       Tamagotchi tamagotchi = new Tamagotchi("Pochita");
       Assert.AreEqual("Pochita", tamagotchi.Name);
@@ -18,7 +18,7 @@ namespace TamagotchiTests.Tests
       Assert.IsTrue(tamagotchi.IsAlive);
     }
     [TestMethod]
-    public void Feed_ChangesValueOfHungerProperty_Int()
+    public void Feed_ChangesValueOfHungerAndHappiness_Int()
     {
       Tamagotchi tamagotchi = new Tamagotchi("Pochita");
       tamagotchi.Feed();
@@ -26,7 +26,7 @@ namespace TamagotchiTests.Tests
       Assert.AreEqual(27, tamagotchi.Happiness);
     }
     [TestMethod]
-    public void Play_ChangesValueOfHappinessProperty_Int()
+    public void Play_ChangesValueOfHungerAndHappiness_Int()
     {
       Tamagotchi tamagotchi = new Tamagotchi("Pochita");
       tamagotchi.Play();
@@ -34,7 +34,7 @@ namespace TamagotchiTests.Tests
       Assert.AreEqual(23, tamagotchi.Hunger);
     }
     [TestMethod]
-    public void Sleep_ChangesValueOfHappinessProperty_Int()
+    public void Sleep_ChangesValueOfHungerAndHappiness_Int()
     {
       Tamagotchi tamagotchi = new Tamagotchi("Pochita");
       tamagotchi.Sleep();
