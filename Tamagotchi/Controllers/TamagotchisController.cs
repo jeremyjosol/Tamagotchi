@@ -8,7 +8,6 @@ namespace TamagotchiToy.Controllers
   public class TamagotchisController : Controller
   {
     private static List<Tamagotchi> _tamagotchis = new List<Tamagotchi>();
-    public static Tamagotchi myTamagotchi;
 
     [HttpGet("/tamagotchis")]
     public ActionResult Index()
