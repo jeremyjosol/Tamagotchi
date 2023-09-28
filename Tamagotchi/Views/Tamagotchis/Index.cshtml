@@ -12,19 +12,23 @@
   <body>
     @using TamagotchiToy.Models;
     @model List<TamagotchiToy.Models.Tamagotchi>
+
   <h1>Welcome to your Tamagotchi Toy.</h1>
+
     @if (Model.Count == 0)
     {
       <p>You have no Tamagotchis to play with.</p>
-      <p><a href="tamagotchis/new">Create a new Tamagotchi!</a></p>
+      <p><a href="/tamagotchis/new">Create a new Tamagotchi!</a></p>
     }
+    
   @foreach (Tamagotchi tamagotchi in Model)
   {
-  <h3>Your Tamagotchi's name is: @tamagotchi.Name</h3>
-  <h3>Your Tamagotchi's Hunger is: @tamagotchi.Hunger</h3>
-  <h3>Your Tamagotchi's Happiness is: @tamagotchi.Happiness</h3>
+
+  <h3>Your Tamagotchi: @tamagotchi.Name</h3>
+  <h3>@tamagotchi.Name Hunger: @tamagotchi.Hunger</h3>
+  <h3>@tamagotchi.Name Happiness: @tamagotchi.Happiness</h3>
   
-   <form action="tamagotchis/feed" method="post" value="feed">
+  <form action="tamagotchis/feed" method="post" value="feed">
     <button type="submit">Feed</button>
   </form>
   <form action="tamagotchis/play" method="post" value="play">
