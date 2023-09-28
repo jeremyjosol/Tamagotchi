@@ -4,6 +4,7 @@ This is a basic web application that emulates the gameplay of a popular toy from
 
 Under the hood, the methods do the following:
 ```csharp
+exampleTamagotchi = new Tamagotchi();
 // each Tamagotchi instance starts with 25 Hunger points and 25 Happiness points.
 exampleTamagotchi.Hunger = 25;
 exampleTamagotchi.Happiness = 25;
