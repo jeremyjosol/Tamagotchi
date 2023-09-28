@@ -36,7 +36,7 @@ namespace TamagotchiToy.Models
     }
     public void LifeUpdate()
     {
-      if (Hunger <= 0 || Happiness <= 0)
+      if (Hunger == 0 || Happiness <= 0)
       {
         IsAlive = false;
       }
